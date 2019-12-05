@@ -1,0 +1,8 @@
+Packages
+Yay Package Manager - https://github.com/Jguer/yay
+Polybar - https://github.com/polybar/polybar
+
+Misc
+SIJI Font - https://aur.archlinux.org/packages/siji-git/
+Font-Awesome 5 - https://www.archlinux.org/packages/community/any/ttf-font-awesome/
+
