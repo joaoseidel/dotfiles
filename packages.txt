@@ -1,6 +1,7 @@
 Packages
 Yay Package Manager - https://github.com/Jguer/yay
 Polybar - https://github.com/polybar/polybar
+SDK Man! - https://sdkman.io/
 
 Misc
 SIJI Font - https://aur.archlinux.org/packages/siji-git/

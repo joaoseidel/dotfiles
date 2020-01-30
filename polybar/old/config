@@ -43,7 +43,7 @@ line-size = 3
 line-color = #f00
 
 border-size = 4
-border-color = #00000000
+border-color = #000
 
 padding-left = 2
 padding-right = 2
@@ -413,16 +413,16 @@ menu-2-1-exec = menu-open-0
 
 [module/updates-arch-combined]
 type = custom/script
-exec = ~/.config/polybar/scripts/updates-arch-combined/updates-arch-combined.sh
+exec = ~/scripts/updates-arch-combined/updates-arch-combined.sh
 interval = 600
 format-underline = #e17070
 
 [module/bluetooth]
 type = custom/script
-exec = ~/.config/polybar/scripts/bluetooth/bluetooth.sh
+exec = ~/scripts/bluetooth/bluetooth.sh
 interval = 2
 click-left = exec blueberry
-click-right = exec ~/.config/polybar/scripts/bluetooth/toggle_bluetooth.sh
+click-right = exec ~/scripts/bluetooth/toggle_bluetooth.sh
 format-padding = 1
 format-underline = #afeeee
 format-foreground = #ffffff
