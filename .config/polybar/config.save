@@ -1,0 +1,408 @@
+; #################### Bar launcher #########################
+
+[bar/launcher]
+width = 4%
+height = 22px
+offset-x = 2%
+offset-y = 3px
+radius = 8
+fixed-center = true
+background = #dfdfdf
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
+;font-0 = Fira Code Nerd Font:pixelsize=8.7:style=Bold;1
+font-0 = MaterialDesignIcons:pixelsize=12:style:Solid;4
+
+tray-position = right
+tray-padding = 0
+;tray-background = ${colors.background}
+;tray-offset-y = 100
+;tray-offset-x = 110%
+
+modules-center = launcher
+wm-restack = i3
+override-redirect = true
+cursor-click = pointer
+cursor-scroll = default
+bottom = false
+
+[module/wireless-network]
+type = internal/network
+interface = wlp7s0
+interval = 3.0
+udspeed-minwidth = 0
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-connected =  %essid%
+label-connected-foreground = #eefafafa
+label-disconnected = 
+label-disconnected-foreground = #66ffffff
+
+; #################### Bar songs #########################
+
+[bar/songs]
+width = 24%
+height = 22px
+offset-x = 62% 
+offset-y = 3px
+radius = 8
+fixed-center = true
+background = #00000000
+foreground = #000000
+padding-left = 1
+padding-right = 1
+module-margin-left = 1
+module-margin-right = 1
+font-0 = Iosevka :pixelsize=9:style=Bold;2
+font-1 = MaterialDesignIcons:pixelsize=14:style:Solid;4
+modules-left = mask
+modules-center = song
+wm-restack = i3
+override-redirect = true
+cursor-click = pointer
+cursor-scroll = default
+bottom = false
+
+; #################### Bar player #########################
+
+[bar/player]
+width = 5%
+height = 22px
+offset-x = 7.0% 
+offset-y = 3px
+radius = 8
+fixed-center = true
+background = #0e1619
+
+padding-left = 2
+padding-right = 2
+module-margin-left = 2
+module-margin-right = 0
+;font-0 =  Fira Code Nerd Font:pixelsize=8.7:style=Bold;1
+font-0 = MaterialDesignIcons:pixelsize=13:style:Solid;3
+modules-left = 
+modules-center = prev toggle next
+wm-restack = i3
+override-redirect = true
+cursor-click = pointer
+cursor-scroll = default
+bottom = false
+
+
+; #################### Bar right #########################
+
+[bar/right]
+width = 17.5%
+height = 22px
+offset-x = 68%
+offset-y = 3px
+radius = 8
+fixed-center = true
+background = #dfdfdf
+
+padding-left = 2
+padding-right = 2
+module-margin-left = 0
+module-margin-right = 0
+;font-0 = Fira Mono:pixelsize=8.7;1
+font-0 = MaterialDesignIcons:pixelsize=14:style:Solid;6
+font-1 = Iosevka :pixelsize=8.5:style=Bold;3
+modules-center = date
+tray-position = right
+tray-detached = true
+tray-maxsize =30
+;tray-transparent = true
+tray-background = #dfdfdf
+
+wm-restack = i3
+override-redirect = true
+cursor-click = pointer
+cursor-scroll = default
+bottom = false
+
+; ######################## Bar Center ########################
+
+[bar/center]
+width = 23%
+height = 22px
+offset-x = 38%
+offset-y = 3px
+radius = 8
+fixed-center = true
+background =  #575771
+;foreground = #9ae0bd
+padding-left = 2
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
+font-0 = FontAwesome:pixelsize=11;1
+font-1 = MaterialDesignIcons:pixelsize=14;3
+
+modules-center = i3   
+wm-restack = i3
+override-redirect = true
+cursor-click = pointer
+cursor-scroll = default
+bottom = false
+
+; ###################### Bar power ########################
+
+[bar/power]
+width = 8.5%
+height = 22px
+offset-x = 90%
+offset-y = 3px
+radius = 8
+fixed-center = true
+background = #dfdfdf
+padding-left = 3
+padding-right = 3
+module-margin-left = 2
+module-margin-right = 2
+font-0 = Iosevka:pixelsize=8:style=Bold;2
+font-1 = MaterialDesignIcons:pixelsize=12:style:Solid;3
+modules-right = volume battery powermenu
+wm-restack = i3
+override-redirect = true
+cursor-click = pointer
+cursor-scroll = default
+bottom = false
+
+[bar/mask]
+width = 100%
+height = 28.4px
+offset-x = 0%
+offset-y = 0px
+radius = 8
+fixed-center = true
+background = #c1c2d0
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
+font-0 = Iosevka:pixelsize=8.7:style=Bold;1
+modules-center = sep
+wm-restack = i3
+override-redirect = true
+cursor-click = pointer
+cursor-scroll = default
+bottom = false
+
+;#################### Modules ####################
+
+[module/i3]
+type = internal/i3
+
+pin-workspaces = false
+strip-wsnumbers = true
+index-sort = true
+enable-click = true
+enable-scroll = false
+wrapping-scroll = false
+reverse-scroll = false
+fuzzy-match = true
+
+ws-icon-0 = "1; 󰲋 "
+ws-icon-1 = "2; 󱍢 "
+ws-icon-2 = "3; 󰉏 "
+ws-icon-3 = "4; 󰨞 "
+ws-icon-4 = "5; 󰂖 "
+ws-icon-5 = "6; 󰚴 "
+ws-icon-6 = "7; 󰓇 "
+ws-icon-7 = "8; 󰌶 "
+ws-icon-8 = "9; 󰦫""
+
+format = <label-state>
+
+label-focused = %icon%
+label-focused-foreground = #eda475
+label-focused-background = #575771
+label-focused-padding = 1
+
+label-unfocused = ${self.label-focused}
+label-unfocused-foreground = #9697b5
+label-unfocused-background = #575771
+label-unfocused-padding = 1
+
+label-visible = ${self.label-focused}
+label-visible-background = #575771
+label-visible-padding = 1
+
+label-urgent = ${self.label-focused}
+label-urgent-foreground = #ed404c
+label-urgent-padding = 1
+
+[module/date]
+type = custom/script
+
+exec = /home/joaoseidel/.config/polybar/scripts/date.sh
+interval = 15
+tail = true
+label-foreground =  #3d3d29
+click-left = gsimplecal
+
+[module/powermenu]
+type = custom/script
+exec = echo " 󱍸 "
+format-foreground =  #c65353
+click-left = /home/joaoseidel/.config/rofi/rofi\ menu/powermenu.sh &
+interval = 600
+
+[module/volume]
+type = internal/alsa
+
+format = <label>
+label-volume = "󰕾%{T2}%percentage%%%{T-} "
+label-volume-foreground =  #7575a3
+
+format-foreground =   #7575a3
+label-muted = "󱄡  "
+label-muted-foreground =  #7575a3
+;interval = 15
+
+[module/launcher]
+type = custom/text
+content = "%{T4} 󱇙 %{T-}"
+content-foreground = #0e1619
+content-padding = 1
+click-left = rofi -show drun -eh 2 -bw 0  &
+;interval = 600
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging =<animation-charging>%{T3}<label-charging>%{T-}
+format-discharging =<ramp-capacity>%{T3}<label-discharging>%{T-} 
+format-full = 󱈑%{T3}100%%{T-}
+format-full-foreground = #a3be8c
+label-charging-foreground = #a3be8c
+label-discharging-foreground = #a3be8c
+
+animation-charging-0 = 󱊤
+animation-charging-1 = 󱊥
+animation-charging-2 = 󱊦
+animation-charging-foreground =#a3be8c
+animation-charging-framerate = 750
+
+ramp-capacity-0 = %{F#FF004B}󰂃%{F-}
+ramp-capacity-1 = %{F#d08770}󰁺%{F-}
+ramp-capacity-2 = %{F#d08770}󰁻%{F-}
+ramp-capacity-3 = %{F#d08770}󰁼%{F-}
+ramp-capacity-4 =󰁾
+ramp-capacity-5 =󰁾
+ramp-capacity-6 =󰁿
+ramp-capacity-7 =󰂀
+ramp-capacity-8 =󰂀
+ramp-capacity-9 =󰂂
+ramp-capacity-10 =󰁹 
+ramp-capacity-foreground = #a3be8c
+ramp-capacity-framerate = 750
+poll-interval = 5
+
+[module/prev]
+type = custom/script
+exec = echo "%{T5}󰒮 %{T-}" &
+format = "%{F#999999}<label>%{F-}"
+interval = 600
+tail = true
+ 
+click-left = playerctl --player=spotify previous &
+
+[module/toggle]
+type = custom/script
+exec = [[ "$(playerctl -p spotify status 2>/dev/null)" == "Playing" ]] && echo "󰏦" || echo "󰐍"
+interval = 3
+format = "%{F#ffa366}<label>%{F-}"
+tail = true
+click-left = playerctl --player=spotify play-pause &
+
+[module/next]
+type = custom/script
+exec = echo "%{T5}󰒭 %{T-}" &
+format = "%{F#999999}<label>%{F-}"
+interval = 600
+
+tail = true
+click-left = playerctl --player=spotify next &
+
+[module/song]
+type = custom/script
+exec = /home/joaoseidel/.config/scripts/song.sh 2>/dev/null || echo "[󰎇]"
+format = "<label>  "
+;format-prefix = "%{F#7575a3} 󰓇 %{F-}"
+format-background = #00000000 
+interval = 10
+format-foreground = #662900
+tail = true
+
+[module/sep]
+content = "/"
+type = custom/text
+content-foreground = #fdfdfd60
+margin = 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
