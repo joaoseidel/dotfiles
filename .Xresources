@@ -1,0 +1,107 @@
+
+
+
+
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+
+xcursor.theme:            Vanilla-DMZ
+xscreensaver.fade:   false
+xscreensaver.unfade: false
+! ===== urxvt =====
+
+#URxvt.scrollBar: off
+#URxvt.font:  xft:Cascadia Mono Regular:style=Bold:size=12,\xft:mplus nerd font mono:size=10,\xft:CozetteVector:size=14:minspace=False,\xft:Symbola:size=14,    
+
+#URxvt.internalBorder: 20
+#URxvt.imLocale: en_US.UTF-8
+#URxvt.termName: xterm-256color
+#URxvt.iso14755: false
+#URxvt.iso14755_52: false
+#URxvt.perl-ext-common:default,resize-font
+#URxvt.keysym.C-o:resize-font:smaller
+#URxvt.keysym.C-p:resize-font:bigger
+#URxvt.keysym.C-i:resize-font:reset
+urxvt*depth:32
+#URxvt.cursorUnderline: true
+#URxvt.scrollBar_right: true
+
+! =======color scheme==========
+
+*background:	  #1b1e25
+*foreground:    #999999
+*cursorColor:  	#b48ead
+*color0:	      #666699
+*color1:	      #ff8080
+*color2:        #d65cad
+*color3:	      #9e822e
+*color4:	      #99bccc
+*color5:        #008080
+*color6:        #248f8f
+*color7:	      #999999
+*color8:	      #666699
+*color9:	      #ff8080
+*color10:       #d65cad
+*color11:	      #9e822e
+*color12:	      #99bccc
+*color13:       #008080
+*color14:	      #248f8f
+*color15:	      #999999
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
