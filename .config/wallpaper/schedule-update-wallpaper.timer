@@ -1,0 +1,10 @@
+[Unit]
+Description=Update wallpaper every hour
+Requires=schedule-update-wallpaper.service
+
+[Timer]
+Unit=schedule-update-wallpaper.service
+OnCalendar=hourly
+
+[Install]
+WantedBy=timers.target

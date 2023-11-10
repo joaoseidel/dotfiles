@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+rofi_command="rofi -theme $HOME/.config/rofi/powermenu.rasi"
+
+uptime=$(uptime -p | sed -e 's/up //g')
+
+# Options
+shutdown=""
+reboot=""
+lock=""
+suspend=""
+logout=""
+ddir="$HOME/.config/rofi"
+
+# Ask for confirmation
+rdialog () {
+    rofi -dmenu\
+    -i\
+    -no-fixed-num-lines\
+    -p "Are You Sure? (y,n) : "\
+    -theme "$ddir/confirm.rasi"
+}
+
+# Variable passed to rofi
+options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
+
+chosen="$(echo -e "$options" | $rofi_command -p "UP - $uptime" -dmenu -selected-row 0)"
+case $chosen in
+    $shutdown)
+        ans=$(rdialog &)
+        if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+            systemctl poweroff
+            elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+            exit
+        fi
+    ;;
+    $reboot)
+        ans=$(rdialog &)
+        if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+            systemctl reboot
+            elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+            exit
+        fi
+    ;;
+    $lock)
+        swaylock
+    ;;
+    $suspend)
+        ans=$(rdialog &)
+        if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+            swaylock
+            systemctl suspend
+            elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+            exit
+        fi
+    ;;
+    $logout)
+        ans=$(rdialog &)
+        if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+            pkill -9 -u $USER
+            elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+            exit
+        fi
+    ;;
+esac

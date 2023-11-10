@@ -1,0 +1,6 @@
+[Unit]
+Description=A job to update the wallpaper
+
+[Service]
+Type=oneshot
+ExecStart=/home/%u/.config/wallpaper/update.sh
