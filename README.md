@@ -1,6 +1,4 @@
 # Installation
-
-## Pre-install
 ### Move the config folders
 ```bash
 sudo cp -r .config/* $HOME/.config/
@@ -86,28 +84,18 @@ sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfre
 sudo dnf install akmod-nvidia -y
 ```
 
-## Post-install
-### Nvidia drivers
-```bash
-sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm -y
-
-sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
-
-sudo dnf install akmod-nvidia -y
-```
-
-#### With cuda support
+### With cuda support
 ```bash
 sudo dnf install xorg-x11-drv-nvidia-cuda -y
 ```
 
-#### Install nvidia hyprland & additionally packages
+### Install nvidia hyprland & additionally packages
 ```bash
 sudo dnf install hyprland-nvidia --allowerasing -y
 sudo dnf install qt5-qtwayland qt5ct libva libva-nvidia-driver -y
 ```
 
-#### Fixing suspend/wakeup issues
+### Fixing suspend/wakeup issues
 ```bash
 sudo systemctl enable nvidia-suspend.service
 sudo systemctl enable nvidia-hibernate.service
