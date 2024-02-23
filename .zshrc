@@ -118,3 +118,34 @@ export EDITOR='vim'
 #run
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 neofetch
+
+#zplug
+if [[ ! -d ~/.zplug ]];then
+  git clone https://github.com/zplug/zplug ~/.zplug
+fi
+source ~/.zplug/init.zsh
+
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/sudo", from:oh-my-zsh
+zplug "plugins/command-not-found", from:oh-my-zsh
+zplug "plugins/fd", from:oh-my-zsh
+zplug "plugins/gitignore", from:oh-my-zsh
+zplug "plugins/mvn", from:oh-my-zsh
+zplug "plugins/doctl", from:oh-my-zsh
+zplug "plugins/docker", from:oh-my-zsh
+zplug "plugins/extract", from:oh-my-zsh
+zplug "plugins/git-prompt", from:oh-my-zsh
+zplug "plugins/zsh-interactive-cd", from:oh-my-zsh
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-completions"
+zplug "themes/robbyrussell", from:oh-my-zsh, as:theme
+zplug "arzzen/calc.plugin.zsh", as:plugin
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+zplug load
