@@ -1,64 +1,87 @@
 #!/usr/bin/env bash
-rofi_command="rofi -theme $HOME/.config/rofi/powermenu.rasi"
+# Current Theme
+dir="$HOME/.config/rofi/"
+theme='powermenu'
 
-uptime=$(uptime -p | sed -e 's/up //g')
+# CMDs
+uptime="`uptime -p | sed -e 's/up //g'`"
+host=`hostname`
 
 # Options
-shutdown=""
-reboot=""
-lock=""
-suspend=""
-logout=""
-ddir="$HOME/.config/rofi"
+shutdown=' Shutdown'
+reboot=' Reboot'
+lock=' Lock'
+suspend=' Suspend'
+logout=' Logout'
+yes='👍 Yes'
+no='👎 No'
 
-# Ask for confirmation
-rdialog () {
-    rofi -dmenu\
-    -i\
-    -no-fixed-num-lines\
-    -p "Are You Sure? (y,n) : "\
-    -theme "$ddir/confirm.rasi"
+# Rofi CMD
+rofi_cmd() {
+	rofi -dmenu \
+		-p "$host" \
+		-mesg "Uptime: $uptime" \
+		-theme ${dir}/${theme}.rasi
 }
 
-# Variable passed to rofi
-options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
+# Confirmation CMD
+confirm_cmd() {
+	rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 250px;}' \
+		-theme-str 'mainbox {children: [ "message", "listview" ];}' \
+		-theme-str 'listview {columns: 2; lines: 1;}' \
+		-theme-str 'element-text {horizontal-align: 0.5;}' \
+		-theme-str 'textbox {horizontal-align: 0.5;}' \
+		-dmenu \
+		-p 'Confirmation' \
+		-mesg 'Are you Sure?' \
+		-theme ${dir}/${theme}.rasi
+}
 
-chosen="$(echo -e "$options" | $rofi_command -p "UP - $uptime" -dmenu -selected-row 0)"
-case $chosen in
-    $shutdown)
-        ans=$(rdialog &)
-        if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
-            systemctl poweroff
-            elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
-            exit
-        fi
-    ;;
-    $reboot)
-        ans=$(rdialog &)
-        if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
-            systemctl reboot
-            elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
-            exit
-        fi
-    ;;
-    $lock)
-        swaylock
-    ;;
-    $suspend)
-        ans=$(rdialog &)
-        if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
-            swaylock
+# Ask for confirmation
+confirm_exit() {
+	echo -e "$yes\n$no" | confirm_cmd
+}
+
+# Pass variables to rofi dmenu
+run_rofi() {
+	echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
+}
+
+# Execute Command
+run_cmd() {
+	selected="$(confirm_exit)"
+	if [[ "$selected" == "$yes" ]]; then
+		if [[ $1 == '--shutdown' ]]; then
+			systemctl poweroff
+		elif [[ $1 == '--reboot' ]]; then
+			systemctl reboot
+		elif [[ $1 == '--suspend' ]]; then
+			swaylock -f
             systemctl suspend
-            elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
-            exit
-        fi
-    ;;
+		elif [[ $1 == '--logout' ]]; then
+			pkill -9 -u $USER
+		fi
+	else
+		exit 0
+	fi
+}
+
+# Actions
+chosen="$(run_rofi)"
+case ${chosen} in
+    $shutdown)
+		run_cmd --shutdown
+        ;;
+    $reboot)
+		run_cmd --reboot
+        ;;
+    $lock)
+		swaylock
+        ;;
+    $suspend)
+		run_cmd --suspend
+        ;;
     $logout)
-        ans=$(rdialog &)
-        if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
-            pkill -9 -u $USER
-            elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
-            exit
-        fi
-    ;;
+		run_cmd --logout
+        ;;
 esac

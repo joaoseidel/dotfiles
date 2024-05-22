@@ -1,154 +1,156 @@
+/*****----- Configuration -----*****/
 configuration {
-    show-icons:                     true;
-    display-drun: 		            "";
-    drun-display-format:            "{icon} {name}";
-    disable-history:                false;
-    click-to-exit: 		            true;
-    location:                       4;
+    show-icons:                 false;
 }
 
-@import "globals.rasi"
+/*****----- Global Properties -----*****/
+@import                          "globals.rasi"
 
-/* Line Responsible For Button Layouts */
-/* BUTTON = TRUE */
-
+/*****----- Main Window -----*****/
 window {
-    transparency:                   "real";
-    background-color:               @bg-col;
-    text-color:                     @fg-col;
-    border:                  	    4px;
-    border-color:                   @border-col;
-    border-radius:                  10px;
-    width:                          110px;
-    x-offset:                       -2%;
-    y-offset:                       0;
+    /* properties for window widget */
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       110px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    /* properties for all widgets */
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      4px solid;
+    border-radius:               12px;
+    border-color:                @border-col;
+    cursor:                      "default";
+    background-color:            @bg-col;
 }
 
-prompt {
-    enabled: 			            true;
-    margin: 			            0px 0px 0px 8px;
-    padding: 			            8px;
-    background-color: 		        @bg-col;
-    text-color: 		            @fg-col;
-    border:                  	    0px 0px 2px 0px;
-    border-color:                   @border-col;
-    border-radius:                  10px;
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     20px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @border-col;
+    background-color:            transparent;
+    children:                    [ "inputbar", "message", "listview" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px;
+    border-radius:               12px;
+    border-color:                @border-col;
+    background-color:            transparent;
+    text-color:                  @fg-col;
+    children:                    [ "textbox-prompt-colon", "prompt" ];
 }
 
 textbox-prompt-colon {
-    expand: 			            false;
-    str: 			                "";
-    border-radius:                  100%;
-    background-color:               @bg-col;
-    text-color:                     @bg-col;
-    padding:                        8px 12px 8px 12px;
-    font:			                "Fira Code 13";
+    enabled:                     true;
+    expand:                      true;
+    str:                         " Power Menu";
+    padding:                     10px 14px;
+    border-radius:               12px;
+    background-color:            @OFF;
+    text-color:                  @fg-col;
 }
 
-entry {
-    background-color:               @bg-col;
-    text-color:                     @fg-col;
-    placeholder-color:              @fg-col;
-    expand:                         true;
-    horizontal-align:               0;
-    placeholder:                    "Search...";
-    blink:                          true;
-    border:                  	    0px 0px 2px 0px;
-    border-color:                   @border-col;
-    border-radius:                  10px;
-    padding:                        8px;
+prompt {
+    enabled:                     true;
+    padding:                     10px;
+    border-radius:               12px;
+    background-color:            @ON;
+    text-color:                  @bg-col;
 }
 
-inputbar {
-    children: 		                [ textbox-prompt-colon ];
-    background-color:               @bg-col;
-    text-color:                     @fg-col;
-    expand:                         false;
-    border:                  	    0px 0px 0px 0px;
-    border-radius:                  0px;
-    border-color:                   @border-col;
-    margin:                         0px 0px 0px 0px;
-    padding:                        0px;
-    position:                       center;
+/*****----- Message -----*****/
+message {
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     10px;
+    border:                      0px solid;
+    border-radius:               12px;
+    border-color:                @border-col;
+    background-color:            @fg-col;
+    text-color:                  @bg-col;
 }
 
-case-indicator {
-    background-color:               @bg-col;
-    text-color:                     @fg-col;
-    spacing:                        0;
+textbox {
+    background-color:            inherit;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    placeholder-color:           @fg-col;
+    blink:                       true;
+    markup:                      true;
 }
 
+error-message {
+    padding:                     10px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @border-col;
+    background-color:            @bg-col;
+    text-color:                  @fg-col;
+}
 
+/*****----- Listview -----*****/
 listview {
-    background-color:               @bg-col;
-    columns:                        1;
-    lines:			                5;
-    spacing:                        15px;
-    cycle:                          true;
-    dynamic:                        true;
-    layout:                         vertical;
+    enabled:                     true;
+    columns:                     1;
+    lines:                       5;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     5px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @selected-col;
+    background-color:            transparent;
+    text-color:                  @fg-col;
+    cursor:                      "default";
 }
 
-mainbox {
-    background-color:               @bg-col;
-    children:                       [ listview ];
-    spacing:                        15px;
-    padding:                        15px;
-}
-
+/*****----- Elements -----*****/
 element {
-    background-color:               @bg-col;
-    text-color:                     @fg-col;
-    orientation:                    horizontal;
-    border-radius:                  10px;
-    padding:                        20px;
-}
-
-element-icon {
-    background-color: 		        inherit;
-    text-color:       		        inherit;
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
-    size:                           0px;
-    border:                         0px;
+    enabled:                     true;
+    spacing:                     0px;
+    margin:                      0px;
+    padding:                     10px;
+    border:                      0px solid;
+    border-radius:               12px;
+    border-color:                @border-col;
+    background-color:            transparent;
+    text-color:                  @fg-col;
+    cursor:                      pointer;
 }
 
 element-text {
-    background-color: 		        inherit;
-    text-color:       		        inherit;
-    font:			                "FontAwesome 15";
-    expand:                         true;
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
-    margin:                         0px 0px 0px 0px;
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
 }
 
 element selected {
-    background-color:               @bg-col-light;
-    text-color:                     @selected-col;
-    border:                  	    0px 0px 0px 0px;
-    border-radius:                  10px;
-    border-color:                   @border-col;
-}
-
-element.active,
-element.selected.urgent {
-  background-color: @ON;
-  text-color: @bg-col;
-  border-color: @ON;
-}
-
-element.selected.urgent {
-  border-color: @border-col;
-}
-
-element.urgent,
-element.selected.active {
-  background-color: @OFF;
-  text-color: @bg-col;
-  border-color: @OFF;
-}
-
-element.selected.active {
-  border-color: @border-col;
+    background-color:            var(blue);
+    text-color:                  var(bg-col);
 }
