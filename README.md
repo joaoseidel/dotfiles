@@ -29,12 +29,11 @@ sudo dnf copr enable erikreider/SwayNotificationCenter -y
 
 sudo dnf install hyprland -y
 sudo dnf install hyprpaper -y
-sudo dnf install waybar -y
-sudo dnf install swappy -y
-sudo dnf install swaylock-effects -y
-sudo dnf install mako -y
+sudo dnf install hyprshot -y
 sudo dnf install rofi -y
+sudo dnf install waybar -y
 sudo dnf install SwayNotificationCenter -y
+sudo dnf install swaylock-effects -y
 ```
 
 ## Terminal
