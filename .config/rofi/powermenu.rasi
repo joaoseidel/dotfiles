@@ -13,8 +13,8 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       110px;
-    x-offset:                    0px;
+    width:                       450px;
+    x-offset:                    -1%;
     y-offset:                    0px;
 
     /* properties for all widgets */

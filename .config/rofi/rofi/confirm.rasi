@@ -1,0 +1,22 @@
+@import "globals.rasi"
+
+* {
+    background-color:       @bg-col;
+    text-color:             @blue;
+}
+
+window {
+    width:      	        260px;
+    padding:                20px;
+    border:		            4px;
+    border-radius:          8px;
+    border-color:           @border-col;
+    location:               0;
+    x-offset:               0;
+    y-offset:               -4%;
+}
+
+entry {
+    expand: 		        true;
+    text-color:		        @blue;
+}
